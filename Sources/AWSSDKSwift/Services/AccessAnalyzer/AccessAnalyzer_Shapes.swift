@@ -78,9 +78,11 @@ extension AccessAnalyzer {
         /// The actions that an external principal is granted permission to use by the policy that generated the finding.
         public let actions: [String]?
         /// The time at which the resource was analyzed.
-        public let analyzedAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var analyzedAt: TimeStamp
         /// The time at which the finding was created.
-        public let createdAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var createdAt: TimeStamp
         /// An error message.
         public let error: String?
         /// Indicates whether the policy that generated the finding grants public access to the resource.
@@ -96,7 +98,8 @@ extension AccessAnalyzer {
         /// The current status of the finding generated from the analyzed resource.
         public let status: FindingStatus?
         /// The time at which the finding was updated.
-        public let updatedAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var updatedAt: TimeStamp
 
         public init(actions: [String]? = nil, analyzedAt: TimeStamp, createdAt: TimeStamp, error: String? = nil, isPublic: Bool, resourceArn: String, resourceOwnerAccount: String, resourceType: ResourceType, sharedVia: [String]? = nil, status: FindingStatus? = nil, updatedAt: TimeStamp) {
             self.actions = actions
@@ -154,11 +157,13 @@ extension AccessAnalyzer {
         /// The ARN of the analyzer.
         public let arn: String
         /// A timestamp for the time at which the analyzer was created.
-        public let createdAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var createdAt: TimeStamp
         /// The resource that was most recently analyzed by the analyzer.
         public let lastResourceAnalyzed: String?
         /// The time at which the most recently analyzed resource was analyzed.
-        public let lastResourceAnalyzedAt: TimeStamp?
+        @OptionalCoding<ISO8601TimeStampCoder>
+        public var lastResourceAnalyzedAt: TimeStamp?
         /// The name of the analyzer.
         public let name: String
         /// The status of the analyzer. An Active analyzer successfully monitors supported resources and generates new findings. The analyzer is Disabled when a user action, such as removing trusted access for IAM Access Analyzer from AWS Organizations, causes the analyzer to stop generating new findings. The status is Creating when the analyzer creation is in progress and Failed when the analyzer creation has failed. 
@@ -198,13 +203,15 @@ extension AccessAnalyzer {
     public struct ArchiveRuleSummary: AWSDecodableShape {
 
         /// The time at which the archive rule was created.
-        public let createdAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var createdAt: TimeStamp
         /// A filter used to define the archive rule.
         public let filter: [String: Criterion]
         /// The name of the archive rule.
         public let ruleName: String
         /// The time at which the archive rule was last updated.
-        public let updatedAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var updatedAt: TimeStamp
 
         public init(createdAt: TimeStamp, filter: [String: Criterion], ruleName: String, updatedAt: TimeStamp) {
             self.createdAt = createdAt
@@ -411,11 +418,13 @@ extension AccessAnalyzer {
         /// The action in the analyzed policy statement that an external principal has permission to use.
         public let action: [String]?
         /// The time at which the resource was analyzed.
-        public let analyzedAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var analyzedAt: TimeStamp
         /// The condition in the analyzed policy statement that resulted in a finding.
         public let condition: [String: String]
         /// The time at which the finding was generated.
-        public let createdAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var createdAt: TimeStamp
         /// An error.
         public let error: String?
         /// The ID of the finding.
@@ -433,7 +442,8 @@ extension AccessAnalyzer {
         /// The current status of the finding.
         public let status: FindingStatus
         /// The time at which the finding was updated.
-        public let updatedAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var updatedAt: TimeStamp
 
         public init(action: [String]? = nil, analyzedAt: TimeStamp, condition: [String: String], createdAt: TimeStamp, error: String? = nil, id: String, isPublic: Bool? = nil, principal: [String: String]? = nil, resource: String? = nil, resourceOwnerAccount: String, resourceType: ResourceType, status: FindingStatus, updatedAt: TimeStamp) {
             self.action = action
@@ -473,11 +483,13 @@ extension AccessAnalyzer {
         /// The action in the analyzed policy statement that an external principal has permission to use.
         public let action: [String]?
         /// The time at which the resource-based policy that generated the finding was analyzed.
-        public let analyzedAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var analyzedAt: TimeStamp
         /// The condition in the analyzed policy statement that resulted in a finding.
         public let condition: [String: String]
         /// The time at which the finding was created.
-        public let createdAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var createdAt: TimeStamp
         /// The error that resulted in an Error finding.
         public let error: String?
         /// The ID of the finding.
@@ -495,7 +507,8 @@ extension AccessAnalyzer {
         /// The status of the finding.
         public let status: FindingStatus
         /// The time at which the finding was most recently updated.
-        public let updatedAt: TimeStamp
+        @Coding<ISO8601TimeStampCoder>
+        public var updatedAt: TimeStamp
 
         public init(action: [String]? = nil, analyzedAt: TimeStamp, condition: [String: String], createdAt: TimeStamp, error: String? = nil, id: String, isPublic: Bool? = nil, principal: [String: String]? = nil, resource: String? = nil, resourceOwnerAccount: String, resourceType: ResourceType, status: FindingStatus, updatedAt: TimeStamp) {
             self.action = action
